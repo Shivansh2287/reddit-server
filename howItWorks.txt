@@ -1,0 +1,34 @@
+yarn watch ts->js
+yarn dev  server
+start redis
+
+//development
+ type: "postgres",
+    //url: process.env.DATABASE_URL,
+    "database": "supp",
+    "username": "postgres",
+    "password": "@.",
+    logging: true,
+   synchronize: true, 
+    migrations: [path.join(__dirname, "./migrations/*")],
+    entities: [Post, User, Updoot], 
+
+//production
+  type: "postgres",
+    url: process.env.DATABASE_URL,
+    logging: true,
+    // synchronize: true,
+    migrations: [path.join(__dirname, "./migrations/*")],
+    entities: [Post, User, Updoot],
+
+entities folder is like schema for tables
+middleware for checking authentication
+migration (npx typeorm migration:create -n FakePost) create a template  and in index (await conn.runMigrations();) which will run the migration and put data in tables
+resolvers are query resolver... graphql queries on specific path localhost:4000/graphql  and these resolver gives output
+utils -> sleep is to delay request 
+
+
+//frontend
+yarn dev web
+
+pages folder work as router pages->folder queries a specific id
